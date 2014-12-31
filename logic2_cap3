@@ -1,0 +1,45 @@
+ex_alura
+========
+<meta charset="UTF-8" />
+<canvas id="tela" width="600" height="400">
+
+</canvas>
+
+<script>
+
+var tela = document.getElementById("tela");
+var te = tela.getContext("2d");
+
+te.fillStyle = "#cccccc";
+te.fillRect(0, 0, 600, 400);
+
+var atira = function(evento){
+	var x = evento.pageX - tela.offsetLeft;
+	var y = evento.pageY - tela.offsetTop;
+	
+	te.fillStyle = "blue";
+	te.beginPath();
+	te.arc(x, y, 10, 0, 2 * 3.14);
+	te.fill();
+	
+	console.log("posição do clique:" + x + "," + y);
+	
+};
+
+var atiraRight = function(evento){
+	var x = evento.pageX - tela.offsetLeft;
+	var y = evento.pageY - tela.offsetTop;
+	
+	te.fillStyle = "red";
+	te.beginPath();
+	te.arc(x, y, 10, 0, 2 * 3.14);
+	te.fill();
+	
+	console.log("posição do clique:" + x + "," + y);
+	evento.preventDefault(); // previne o botão direito de abrir a lista de ações 
+};
+
+tela.onclick = atira;
+tela.oncontextmenu = atiraRight;
+
+</script>
